@@ -1,0 +1,10 @@
+
+package com.gamezone;
+
+
+public class Main {
+    
+    public static void main(String[] args) {
+        System.out.println("GameZone Unicesar - Sistema iniciado");
+    }
+}
