@@ -28,7 +28,7 @@ public class Console extends Product {
 
     @Override
     public String describe() {
-        return   getTitle()+ " es una consola marca " + brand + " modelo " + model + " con generacion " + generation ;   }
+        return   getTitle()+ " is a console by " + brand + " , model " + model + " , generation " + generation ;   }
  
     
     
