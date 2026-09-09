@@ -43,4 +43,16 @@ public class Seller extends Person {
     public String getShift() {
         return shift;
     }
+
+    /**
+     * Returns a description of the seller that includes
+     * the employee code and the assigned work shift.
+     *
+     * @return a description of the seller
+     */
+    @Override
+    public String getDescription() {
+        return "Seller: " + getName() + " | Employee Code: " + employeeCode +
+               " | Shift: " + shift;
+    }
 }
