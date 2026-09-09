@@ -50,4 +50,40 @@ public abstract class Person {
     public String getPhone() {
         return phone;
     }
+
+    /**
+     * Sets the name of the person.
+     *
+     * @param name the new name of the person
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Sets the identification of the person.
+     *
+     * @param identification the new identification of the person
+     */
+    public void setIdentification(String identification) {
+        this.identification = identification;
+    }
+
+    /**
+     * Sets the contact phone number of the person.
+     *
+     * @param phone the new phone number of the person
+     */
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    /**
+     * Returns a description of the person that integrates
+     * the particular characteristics of its specific role.
+     * Must be implemented by every concrete subclass.
+     *
+     * @return a description specific to the type of person
+     */
+    public abstract String getDescription();
 }
