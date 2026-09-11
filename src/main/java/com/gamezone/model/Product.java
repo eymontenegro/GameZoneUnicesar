@@ -1,6 +1,10 @@
 
 package com.gamezone.model;
-
+/**
+ * Represents a generic product sold by the store.
+ * This is the base class for all product types (video games, consoles),
+ * and holds the attributes and behavior common to any product.
+ */
 public abstract class Product {
     private String id;
     private String title;
@@ -30,10 +34,20 @@ public abstract class Product {
         return stock;
     }
 
-    
-
+     /**
+     * Builds a description of the product, combining common and
+     * particular attributes. Each subclass provides its own version.
+     *
+     * @return a text description of the product
+     */
    public abstract String describe();
    
+   /**
+     * Reduces the available stock by the given quantity.
+     *
+     * @param quantity the number of units to subtract from stock
+     * @throws IllegalArgumentException if quantity is greater than the available stock
+     */
    public void reduceStock (int quantity ){
        if(stock < quantity){
            throw new IllegalArgumentException("Insufficient Stock:available " + stock + " requested " + quantity );
