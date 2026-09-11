@@ -12,12 +12,23 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.io.File;
-
+/**
+ * Handles saving and loading Product objects (VideoGame and Console)
+ * to and from a CSV file, so the product catalog persists between
+ * application runs.
+ */
 
     
     
 public class ProductRepository {
-    
+     /**
+     * Converts a single product into one CSV-formatted line, choosing
+     * which extra columns to include based on the product's real type.
+     *
+     * @param product the product to convert (VideoGame or Console)
+     * @return a comma-separated line representing the product
+     * @throws IllegalArgumentException if the product type is not recognized
+     */
     
     private String productToCsvLine(Product product){
         String commonData = product.getId() + "," + product.getTitle() + "," + product.getPrice() + "," + product.getStock();
@@ -43,6 +54,13 @@ public class ProductRepository {
     }
     
     
+    /**
+     * Saves the full list of products to the CSV file, overwriting
+     * any previous content.
+     *
+     * @param products the list of products to persist
+     * @throws RuntimeException if an I/O error occurs while writing
+     */
     public void save(List<Product> products) {
     try (BufferedWriter writer = new BufferedWriter(new FileWriter("data/products.csv"))) {
         for (Product product : products) {
@@ -54,6 +72,15 @@ public class ProductRepository {
       throw new RuntimeException("Error saving products: " + e.getMessage(), e);
     }
 }
+    
+    /**
+     * Reconstructs a single Product (VideoGame or Console) from one
+     * CSV-formatted line, based on the type indicated in the first column.
+     *
+     * @param line a single line read from the CSV file
+     * @return the reconstructed Product object
+     * @throws IllegalArgumentException if the product type is not recognized
+     */
     private Product csvLineToProduct(String line) {
     String[] parts = line.split(",");
     String type = parts[0];
@@ -79,6 +106,15 @@ public class ProductRepository {
         throw new IllegalArgumentException("Unknown product type: " + type);
     }
  }
+    
+    /**
+     * Loads the full list of products from the CSV file. If the file
+     * does not exist yet (first run), returns an empty list instead
+     * of failing.
+     *
+     * @return the list of products loaded from the file
+     * @throws RuntimeException if an I/O error occurs while reading
+     */
     public List<Product> load() {
     List<Product> products = new ArrayList<>();
     File file = new File("data/products.csv");
