@@ -1,6 +1,9 @@
 
 package com.gamezone.model;
-
+/**
+ * Represents a console product, with attributes specific to consoles
+ * such as brand, model, and generation.
+ */
 
 public class Console extends Product {
     private String brand;
