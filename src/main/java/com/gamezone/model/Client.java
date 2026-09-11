@@ -53,16 +53,4 @@ public class Client extends Person {
     public void addSale(Sale sale) {
         purchaseHistory.add(sale);
     }
-
-    /**
-     * Returns a description of the client that includes
-     * the email address and the number of purchases made.
-     *
-     * @return a description of the client
-     */
-    @Override
-    public String getDescription() {
-        return "Client: " + getName() + " | Email: " + email +
-               " | Purchases made: " + purchaseHistory.size();
-    }
 }
